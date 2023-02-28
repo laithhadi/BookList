@@ -1,13 +1,18 @@
-// where I store all of my routes for handling todo operations
-
 const express = require('express')
-const todos = require("./todosController")
+const books = require("./BooksController")
 const router = express.Router()
 
-router.get("/todo", todos.index)
-router.get("/todo/:id", todos.show)
-router.post("/create", todos.create)
-router.delete("/delete/:id", todos.delete)
-router.put("/todo/:id", todos.update)
+//GET REQUESTS
+router.get("/books", books.index)
+router.get("/books/:id", books.show)
+
+//POST REQUESTS
+router.post("/books/create", books.create)
+
+//UPDATE REQUESTS
+router.put("/books/:id", books.update)
+
+//DELETE REQUESTS
+router.delete("/books/:id", books.delete)
 
 module.exports = router
