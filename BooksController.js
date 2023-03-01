@@ -66,16 +66,15 @@ exports.show = async function (req, res, next) {
     }
 }
 
-exports.delete = function (req, res, next) {
-    BookModel.findByIdAndDelete(req.params.id, function (err, book) {
-        if (err) {
-            return next(createError(500, "Error deleting book"));
-        }
-        if (!book) {
-            return next(createError(404, "Book not found"));
-        }
-        res.send({ result: true });
-    });
+exports.delete = async function (req, res, next) {
+    const bookId = req.params.id;
+
+    try {
+        const book = await BookModel.findByIdAndDelete(bookId, req.body, { new: true });
+        return res.send(book);
+    } catch (error) {
+        return next(createError(500, "Error deleting book"));
+    }
 }
 
 exports.update = async function (req, res, next) {
