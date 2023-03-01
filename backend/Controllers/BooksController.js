@@ -1,6 +1,6 @@
 const createError = require('http-errors')
-const googleAPIClient = require("./GoogleBooksAPIClient");
-const BookModel = require('./BookModel');
+const googleAPIClient = require("../ExternalAPIs/GoogleBooksAPIClient");
+const BookModel = require('../Models/BookModel');
 
 async function getBookName(bookName) {
     const bookClient = new googleAPIClient();

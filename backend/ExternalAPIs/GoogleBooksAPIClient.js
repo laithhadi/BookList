@@ -1,4 +1,3 @@
-'use strict';
 const AbstractAPIClient = require("./AbstractAPIClient");
 
 module.exports = class GoogleBooksAPIClient extends AbstractAPIClient {
